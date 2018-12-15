@@ -235,6 +235,7 @@ void main_window::deleteWindow(){
 
 void main_window::file_to_delete_choice(QTreeWidgetItem* chosenFileToDelete) {
     if(files_to_remove.size()>0){
+        statusBar()->showMessage(QString("%1 files are chosen").arg(files_to_remove.size()));
         ui->actionDelete_Files->setEnabled(true);
     }
     else {
@@ -262,6 +263,7 @@ void main_window:: delete_files() {
              i = files_to_remove.erase(i);
 
   }
+        statusBar()->clearMessage();
 }
 
 void main_window::getNotification(QString const& message,
