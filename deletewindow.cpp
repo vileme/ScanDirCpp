@@ -8,10 +8,8 @@ DeleteWindow::DeleteWindow(int number,QWidget *parent) :
 
 {
     ui->setupUi(this);
-//    pix.scaledToHeight(ui->label->height(),Qt::SmoothTransformation);
     ui->label->clear();
     QPixmap p = QPixmap::fromImage(QImage(":/img/icons8-warning-shield-48.png"));
-//    p.scaledToHeight(ui->label-)
     ui->label->setPixmap(p);
     ui->label_2->setText(QString("Are you sure you want to delete %1 file(s)?").arg(a));
     setWindowTitle("Warning");
