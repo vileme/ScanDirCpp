@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/PROJECT_Katarina_First_Strike_profileicon.png</normaloff>img/PROJECT_Katarina_First_Strike_profileicon.png</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>40</width>
+    <height>40</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTreeWidget" name="WidgetForDirs">
+      <column>
+       <property name="text">
+        <string>Chosen directories</string>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>Files</string>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Troubles</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd_Directory"/>
+   <addaction name="actionScan_Directories"/>
+   <addaction name="actionDelete_Files"/>
+   <addaction name="action_Cancel"/>
+  </widget>
+  <action name="actionAdd_Directory">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../scandirecC++/257832.png</normaloff>../../scandirecC++/257832.png</iconset>
+   </property>
+   <property name="text">
+    <string>AddDirectory</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionScan_Directories">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../scandirecC++/264660.png</normaloff>
+     <normalon>../../scandirecC++/54398.png</normalon>
+     <selectedon>../../scandirecC++/54398.png</selectedon>../../scandirecC++/264660.png</iconset>
+   </property>
+   <property name="text">
+    <string>ScanDirectories</string>
+   </property>
+   <property name="toolTip">
+    <string>ScanDirectories</string>
+   </property>
+  </action>
+  <action name="actionDelete_Files">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../scandirecC++/trash-512.png</normaloff>
+     <selectedoff>../../scandirecC++/IMG_20180619_182459.jpg</selectedoff>../../scandirecC++/trash-512.png</iconset>
+   </property>
+   <property name="text">
+    <string>DeleteFiles</string>
+   </property>
+   <property name="toolTip">
+    <string>DeleteFiles</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="action_Cancel">
+   <property name="text">
+    <string>actionCancel</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
