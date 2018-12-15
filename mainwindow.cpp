@@ -62,10 +62,8 @@ void main_window::onButtonClicked(){
 
     ui->treeWidget->clear();
     QList<QString> allDirs;
-    qint64  size = 0;
     for (int i = 0; i < ui->WidgetForDirs->topLevelItemCount(); ++i) {
         allDirs.push_back(ui->WidgetForDirs->topLevelItem(i)->text(0));
-        size += countSize(ui->WidgetForDirs->topLevelItem(i)->text(0));
     }
     if(allDirs.size()==0){
             notification("You must choose directories first!", "Notification");
@@ -75,7 +73,7 @@ void main_window::onButtonClicked(){
     makeProgressBar();
     changeButtons();
 
-    worker = new ScanWorker(size);
+    worker = new ScanWorker();
 
     qRegisterMetaType<QMap<QString,QList<QString>>>("myMap");
 
@@ -102,20 +100,6 @@ void main_window::onButtonClicked(){
     worker->deleteLater();
 }
 
-qint64 main_window::countSize(QString const &path){
-    qint64 size = 0;
-        QDir directory = QDir(path);
-        directory.setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot|QDir::NoSymLinks);
-        QFileInfoList list = directory.entryInfoList();
-        for(QFileInfo file_info : list){
-            QString name = file_info.fileName();
-            if(file_info.isDir()){
-                size += countSize(path + "/" + name);
-            }
-            else size+=file_info.size();
-        }
-        return size;
-}
 void main_window::createThread(){
     thread = new QThread(this);
     connect(this,SIGNAL(destroyed()),thread,SLOT(quit()));

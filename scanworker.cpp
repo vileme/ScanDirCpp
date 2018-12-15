@@ -6,7 +6,7 @@
 
 ScanWorker::~ScanWorker(){
 }
-ScanWorker::ScanWorker(qint64 size,QObject *parent): QObject (parent),size(size){
+ScanWorker::ScanWorker(QObject *parent): QObject (parent){
 
 }
 
@@ -16,6 +16,10 @@ void ScanWorker::scan_directories(QList<QString> allDirs)
     QMap<QString, QList<QString>> hashesAndFile;
     QMap<long long,QPair<QString,bool>> sizeAndFiles;
 
+    qint64  size = 0;
+    for (int i = 0; i < allDirs.size(); ++i) {
+        size += countSize(allDirs[i]);
+    }
     qint64 currentSize = 0;
     while (!allDirs.empty()) {
 
@@ -58,6 +62,21 @@ void ScanWorker::scan_directories(QList<QString> allDirs)
 }
 
 
+qint64 ScanWorker::countSize(QString const &path){
+    qint64 size = 0;
+        QDir directory = QDir(path);
+        directory.setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot|QDir::NoSymLinks);
+        QFileInfoList list = directory.entryInfoList();
+        for(QFileInfo file_info : list){
+            QString name = file_info.fileName();
+            if(file_info.isDir()){
+                size += countSize(path + "/" + name);
+            }
+            else size+=file_info.size();
+        }
+        return size;
+}
+
 void ScanWorker::hash(QString const& fileName,QMap<QString, QList<QString>> &hashesAndFile)
 {
     QFile file(fileName);
@@ -69,7 +88,6 @@ void ScanWorker::hash(QString const& fileName,QMap<QString, QList<QString>> &has
         else {
             emit(sendTroubles(fileName));
             emit callNotification("Can't get hash of the file:(","Notification");
-            emit requestCancel();
         }
     }
     else{

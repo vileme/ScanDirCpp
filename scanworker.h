@@ -14,7 +14,7 @@ class ScanWorker: public QObject{
 
 public:~ScanWorker();
 
-    explicit ScanWorker(qint64 size,QObject *parent=0);
+    explicit ScanWorker(QObject *parent=0);
 
 signals:
     void update(int value);
@@ -32,10 +32,10 @@ public slots:
 
 
 private:
-    qint64 size;
 
-    void hash(QString const& fileName,
-QMap<QString, QList<QString>> &hashesAndFile);
+    qint64 countSize(QString const &path);
+
+    void hash(QString const& fileName,QMap<QString, QList<QString>> &hashesAndFile);
 };
 
 
