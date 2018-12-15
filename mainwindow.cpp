@@ -223,6 +223,7 @@ void main_window::file_to_delete_choice(QTreeWidgetItem* chosenFileToDelete) {
         ui->actionDelete_Files->setEnabled(true);
     }
     else {
+        statusBar()->clearMessage();
         ui->actionDelete_Files->setDisabled(true);
     }
     QString file_name = chosenFileToDelete->text(0);
