@@ -1,2 +1,2 @@
-# ScanDirC-
+# ScanDirCpp
 cpp course
