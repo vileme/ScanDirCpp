@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setLibraryPaths(paths);
     QApplication a(argc, argv);
     main_window w;
+    w.setMinimumHeight(768);
+    w.setMinimumWidth(1024);
     w.show();
 
     return a.exec();
